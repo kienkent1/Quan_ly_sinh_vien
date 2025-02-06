@@ -1,0 +1,9 @@
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\bin\Debug\DAL_QLBH.dll
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\bin\Debug\DAL_QLBH.pdb
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\bin\Debug\DTO_QLBH.dll
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\bin\Debug\DTO_QLBH.pdb
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\obj\Debug\DAL_QLBH.csproj.AssemblyReference.cache
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\obj\Debug\DAL_QLBH.csproj.CoreCompileInputs.cache
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\obj\Debug\DAL_QLBH.csproj.CopyComplete
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\obj\Debug\DAL_QLBH.dll
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DAL_QLBH\obj\Debug\DAL_QLBH.pdb
