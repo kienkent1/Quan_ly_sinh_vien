@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace GUI_QLBH
 {
@@ -180,6 +181,19 @@ namespace GUI_QLBH
         private void OpenNewForm()
         {
             Application.Run(new frmHang());
+        }
+
+        private void HuongDanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Tai lieu huong dan su dung phan mem.pdf");
+                System.Diagnostics.Process.Start(path);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("The file is not found in the specified location");
+            }
         }
     }
 }

@@ -52,6 +52,12 @@
     <Compile Include="frmHang.Designer.cs">
       <DependentUpon>frmHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmKhach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKhach.Designer.cs">
+      <DependentUpon>FrmKhach.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmHang.resx">
       <DependentUpon>frmHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKhach.resx">
+      <DependentUpon>FrmKhach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>

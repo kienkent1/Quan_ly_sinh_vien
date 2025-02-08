@@ -118,13 +118,13 @@ namespace GUI_QLBH
                 //Authentication.
                 //This is where the valid email account comes into play. You must have a valid email account(with password) to give our program a place to send the mail from.
 
-                NetworkCredential cred = new NetworkCredential("duoichon1@gmail.com", "chonduoi");
+                NetworkCredential cred = new NetworkCredential("kienpxtb00438@fpt.edu.vn", "qbop bclo aoaf kyps");
 
                 //To send an email we must first create a new mailMessage(an email) to send.
                 MailMessage Msg = new MailMessage();
 
                 // Sender e-mail address.
-                Msg.From = new MailAddress("duoichon1@gmail.com");//Nothing But Above Credentials or your credentials (*******@gmail.com)
+                Msg.From = new MailAddress("kienpxtb00438@fpt.edu.vn");//Nothing But Above Credentials or your credentials (*******@gmail.com)
 
                 // Recipient e-mail address.
                 Msg.To.Add(email);
