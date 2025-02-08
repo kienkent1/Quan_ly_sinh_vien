@@ -157,5 +157,10 @@ namespace GUI_QLBH
             //Application.Exit();
             Application.Run(new Login());
         }
+
+        private void btnthoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

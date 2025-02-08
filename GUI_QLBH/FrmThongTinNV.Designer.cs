@@ -99,6 +99,7 @@ namespace GUI_QLBH
             this.btnthoat.TabIndex = 28;
             this.btnthoat.Text = "Thoát";
             this.btnthoat.UseVisualStyleBackColor = false;
+            this.btnthoat.Click += new System.EventHandler(this.btnthoat_Click);
             // 
             // txtmatkhaumoi2
             // 
