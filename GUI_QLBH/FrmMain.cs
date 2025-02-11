@@ -18,7 +18,7 @@ namespace GUI_QLBH
         public static int profile = 0;// 
         public static string mail;// truyên email từ frmMain cho các form khác thong qua bien static
         Thread th;//using System.Threading;
-        Login dn = new Login();
+        Login dn;
         public FrmMain()
         {
             InitializeComponent();
@@ -28,6 +28,7 @@ namespace GUI_QLBH
         {
             if (!CheckExistForm("Login"))
             {
+                dn = new Login();
                 dn.MdiParent = this;
                 dn.Show();
                 dn.FormClosed += new FormClosedEventHandler(Login_FormClosed);
@@ -147,7 +148,7 @@ namespace GUI_QLBH
             ResetValue();
 
             // Hiển thị lại form đăng nhập
-            ShowLoginForm();
+            //ShowLoginForm();
         }
         private void ShowLoginForm()
         {
@@ -194,6 +195,42 @@ namespace GUI_QLBH
             {
                 MessageBox.Show("The file is not found in the specified location");
             }
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckExistForm("FrmKhach"))
+            {
+                FrmKhach nv = new FrmKhach();
+                nv.MdiParent = this;
+                nv.Show();
+            }
+            else//hiển thị focus
+                ActiveChildForm("FrmKhach");
+        }
+
+        private void NhanVienToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckExistForm("frmNhanVien"))
+            {
+                frmNhanVien nv = new frmNhanVien();
+                nv.MdiParent = this;
+                nv.Show();
+            }
+            else
+                ActiveChildForm("frmNhanVien");
+        }
+
+        private void ThongKeSPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckExistForm("FrmThongKe"))
+            {
+                FrmThongKe nv = new FrmThongKe();
+                nv.MdiParent = this;
+                nv.Show();
+            }
+            else
+                ActiveChildForm("FrmThongKe");
         }
     }
 }

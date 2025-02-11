@@ -65,7 +65,7 @@ namespace GUI_QLBH
             this.thongtinnvToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1560, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1407, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -77,7 +77,7 @@ namespace GUI_QLBH
             this.ProfileNvToolStripMenuItem,
             this.thoátToolStripMenuItem});
             this.tậpTinToolStripMenuItem.Name = "tậpTinToolStripMenuItem";
-            this.tậpTinToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
+            this.tậpTinToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
             this.tậpTinToolStripMenuItem.Text = "Hệ Thống";
             // 
             // đăngNhậpToolStripMenuItem
@@ -118,14 +118,14 @@ namespace GUI_QLBH
             this.NhanVienToolStripMenuItem,
             this.kháchHàngToolStripMenuItem});
             this.danhMụcToolStripMenuItem.Name = "danhMụcToolStripMenuItem";
-            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(90, 26);
+            this.danhMụcToolStripMenuItem.Size = new System.Drawing.Size(90, 24);
             this.danhMụcToolStripMenuItem.Text = "&Danh Mục";
             // 
             // sảnPhẩmToolStripMenuItem
             // 
             this.sảnPhẩmToolStripMenuItem.Name = "sảnPhẩmToolStripMenuItem";
             this.sảnPhẩmToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
-            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.sảnPhẩmToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.sảnPhẩmToolStripMenuItem.Text = "&Sản Phẩm";
             this.sảnPhẩmToolStripMenuItem.Click += new System.EventHandler(this.sảnPhẩmToolStripMenuItem_Click);
             // 
@@ -133,22 +133,24 @@ namespace GUI_QLBH
             // 
             this.NhanVienToolStripMenuItem.Name = "NhanVienToolStripMenuItem";
             this.NhanVienToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N)));
-            this.NhanVienToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.NhanVienToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.NhanVienToolStripMenuItem.Text = "&Nhân Viên";
+            this.NhanVienToolStripMenuItem.Click += new System.EventHandler(this.NhanVienToolStripMenuItem_Click);
             // 
             // kháchHàngToolStripMenuItem
             // 
             this.kháchHàngToolStripMenuItem.Name = "kháchHàngToolStripMenuItem";
             this.kháchHàngToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.K)));
-            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(223, 26);
+            this.kháchHàngToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.kháchHàngToolStripMenuItem.Text = "Khách Hàng";
+            this.kháchHàngToolStripMenuItem.Click += new System.EventHandler(this.kháchHàngToolStripMenuItem_Click);
             // 
             // thongkeToolStripMenuItem
             // 
             this.thongkeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ThongKeSPToolStripMenuItem});
             this.thongkeToolStripMenuItem.Name = "thongkeToolStripMenuItem";
-            this.thongkeToolStripMenuItem.Size = new System.Drawing.Size(86, 26);
+            this.thongkeToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.thongkeToolStripMenuItem.Text = "&Thống Kê";
             // 
             // ThongKeSPToolStripMenuItem
@@ -157,6 +159,7 @@ namespace GUI_QLBH
             this.ThongKeSPToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.P)));
             this.ThongKeSPToolStripMenuItem.Size = new System.Drawing.Size(267, 26);
             this.ThongKeSPToolStripMenuItem.Text = "Thống kê sản phẩm";
+            this.ThongKeSPToolStripMenuItem.Click += new System.EventHandler(this.ThongKeSPToolStripMenuItem_Click);
             // 
             // hướngDẫnToolStripMenuItem
             // 
@@ -164,7 +167,7 @@ namespace GUI_QLBH
             this.HuongDanToolStripMenuItem,
             this.giớiThiệuPhầnMềmToolStripMenuItem});
             this.hướngDẫnToolStripMenuItem.Name = "hướngDẫnToolStripMenuItem";
-            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(100, 26);
+            this.hướngDẫnToolStripMenuItem.Size = new System.Drawing.Size(100, 24);
             this.hướngDẫnToolStripMenuItem.Text = "Hướng Dẫn";
             // 
             // HuongDanToolStripMenuItem
@@ -187,7 +190,7 @@ namespace GUI_QLBH
             this.Chao.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.Chao.BackColor = System.Drawing.Color.Transparent;
             this.Chao.Name = "Chao";
-            this.Chao.Size = new System.Drawing.Size(14, 26);
+            this.Chao.Size = new System.Drawing.Size(14, 24);
             // 
             // thongtinnvToolStripMenuItem
             // 
@@ -197,7 +200,7 @@ namespace GUI_QLBH
             this.thôngTinToolStripMenuItem,
             this.đăngXuấtToolStripMenuItem});
             this.thongtinnvToolStripMenuItem.Name = "thongtinnvToolStripMenuItem";
-            this.thongtinnvToolStripMenuItem.Size = new System.Drawing.Size(14, 26);
+            this.thongtinnvToolStripMenuItem.Size = new System.Drawing.Size(14, 24);
             // 
             // thôngTinToolStripMenuItem
             // 
@@ -218,7 +221,7 @@ namespace GUI_QLBH
             this.label1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label1.Location = new System.Drawing.Point(422, 53);
+            this.label1.Location = new System.Drawing.Point(337, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(659, 39);
@@ -229,7 +232,7 @@ namespace GUI_QLBH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1560, 724);
+            this.ClientSize = new System.Drawing.Size(1407, 807);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

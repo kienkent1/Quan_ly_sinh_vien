@@ -109,7 +109,7 @@ namespace GUI_QLBH
                 //Sending the email.
                 //Now we must create a new Smtp client to send our email.
 
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 25);   //smtp.gmail.com // For Gmail
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);   //smtp.gmail.com // For Gmail
                                                                             //smtp.live.com // Windows live / Hotmail
                                                                             //smtp.mail.yahoo.com // Yahoo
                                                                             //smtp.aim.com // AIM

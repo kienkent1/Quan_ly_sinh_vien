@@ -18,3 +18,6 @@ K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debu
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debug\GUI_QLBH.FrmMain.resources
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debug\GUI_QLBH.FrmThongTinNV.resources
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debug\GUI_QLBH.frmHang.resources
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debug\GUI_QLBH.FrmKhach.resources
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debug\GUI_QLBH.frmNhanVien.resources
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\GUI_QLBH\obj\Debug\GUI_QLBH.FrmThongKe.resources

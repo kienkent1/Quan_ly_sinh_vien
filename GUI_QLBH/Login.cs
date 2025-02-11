@@ -131,7 +131,7 @@ namespace GUI_QLBH
             try
             {
                 //Now we must create a new Smtp client to send our email.
-                SmtpClient client = new SmtpClient("smtp.gmail.com", 25);   //smtp.gmail.com // For Gmail
+                SmtpClient client = new SmtpClient("smtp.gmail.com", 587);   //smtp.gmail.com // For Gmail
                 //Authentication.
                 //This is where the valid email account comes into play. You must have a valid email
                 //account(with password) to give our program a place to send the mail from.
