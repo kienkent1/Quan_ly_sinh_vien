@@ -17,6 +17,7 @@ namespace BUS_QLBH
             return dalNhanVien.NhanVienDangNhap(nv);
         }
 
+
         public string encryption(string password)
         {
             MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
@@ -68,5 +69,10 @@ namespace BUS_QLBH
         {
             return dalNhanVien.TaoMatKhau(email, matKhauMoi);
         }
+        public  DataTable TinhTrangNhanVien(string email)
+        {
+            return dalNhanVien.TinhTrangNhanVien(email);
+        }
+
     }
 }

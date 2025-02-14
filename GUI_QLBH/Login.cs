@@ -23,6 +23,7 @@ namespace GUI_QLBH
         public string email { set; get; }
         public string matkhau { get; set; }
         public string vaitro { set; get; }
+        public string tinhtrang { get; set; }
         public Login()
         {
             InitializeComponent();
@@ -43,23 +44,37 @@ namespace GUI_QLBH
             DTO_NhanVien nv = new DTO_NhanVien();
             nv.EmailNV = txtemail.Text;
             nv.MatKhau = encryption(txtmatkhau.Text);// ma mat khau de so sanh voi mat khau da ma hoa trong csdl
-            if (busNhanVien.NhanVienDangNhap(nv))//successfull login
+            DataTable dtTinhTrang = busNhanVien.TinhTrangNhanVien(nv.EmailNV);
+            if (dtTinhTrang.Rows.Count > 0)
             {
-                //login = true;
-                FrmMain.mail = nv.EmailNV; // truyen email dang nhap cho frmMain
-                DataTable dt = busNhanVien.VaiTroNhanVien(nv.EmailNV);
-                vaitro = dt.Rows[0][0].ToString();// lây vai tro cua nhan vien, hien thi cac chuc nang ma nhan vien co the thao tac
-                MessageBox.Show("Đăng nhập thành công");
-                FrmMain.session = 1; // cap nhat trang thai da dang nhap thanh cong
-
-                this.Close();
+                int tinhtrang = Convert.ToInt32(dtTinhTrang.Rows[0][0]);
+                if (tinhtrang != 0)
+                {
+                    if (busNhanVien.NhanVienDangNhap(nv))
+                    {
+                        FrmMain.mail = nv.EmailNV;
+                        DataTable dt = busNhanVien.VaiTroNhanVien(nv.EmailNV);
+                        vaitro = dt.Rows[0][0].ToString();
+                        MessageBox.Show("Đăng nhập thành công");
+                        FrmMain.session = 1;
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu");
+                        txtemail.Text = null;
+                        txtmatkhau.Text = null;
+                        txtemail.Focus();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tài khoản của bạn không hoạt động, vui lòng liên hệ với quản trị viên.");
+                }
             }
             else
             {
-                MessageBox.Show("Đăng nhập không thành công, kiểm tra lại email hoặc mật khẩu");
-                txtemail.Text = null;
-                txtmatkhau.Text = null;
-                txtemail.Focus();
+                MessageBox.Show("Email không tồn tại trong hệ thống.");
             }
         }
         public string encryption(string password)
@@ -88,7 +103,7 @@ namespace GUI_QLBH
                     builder.Append(RandomString(4, true));
                     builder.Append(RandomNumber(1000, 9999));
                     builder.Append(RandomString(2, false));
-                    MessageBox.Show(builder.ToString());
+                    //MessageBox.Show(builder.ToString());
                     string matkhaumoi = encryption(builder.ToString());
                     busNhanVien.TaoMatKhau(txtemail.Text, matkhaumoi);// update new pass to database
                     SendMail(txtemail.Text, builder.ToString());// send new pass to email

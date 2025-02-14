@@ -345,5 +345,7 @@ namespace GUI_QLBH
             }
             
         }
+
+        
     }
 }

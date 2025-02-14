@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL_QLBH
 {
-   public class DAL_NhanVien:DBConnect
+    public class DAL_NhanVien : DBConnect
     {
         public DataTable getNhanVien()
         {
@@ -132,13 +132,17 @@ namespace DAL_QLBH
         {
             try
             {
+                // Ket noi
                 _conn.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = _conn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "DangNhap";
+                //cmd.Parameters.AddWithValue("email", email);
+                //cmd.Parameters.AddWithValue("matKhau", matKhau);
                 cmd.Parameters.AddWithValue("email", nv.EmailNV);
                 cmd.Parameters.AddWithValue("matKhau", nv.MatKhau);
+                // Query và kiểm tra
                 if (Convert.ToInt16(cmd.ExecuteScalar()) > 0)
                     return true;
             }
@@ -148,10 +152,12 @@ namespace DAL_QLBH
             }
             finally
             {
+                // Dong ket noi
                 _conn.Close();
             }
             return false;
         }
+
         public DataTable VaiTroNhanVien(string email)
         {
             try
@@ -168,6 +174,28 @@ namespace DAL_QLBH
             }
             finally
             {
+                _conn.Close();
+            }
+        }
+        public DataTable TinhTrangNhanVien(string email)
+        {
+            // using store procedure
+            try
+            {
+                // Ket noi
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "[LayTinhTrangNV]";
+                cmd.Parameters.AddWithValue("email", email);
+                cmd.Connection = _conn;
+                DataTable dtNhanVien = new DataTable();
+                dtNhanVien.Load(cmd.ExecuteReader());
+                return dtNhanVien;
+            }
+            finally
+            {
+                // Dong ket noi
                 _conn.Close();
             }
         }
@@ -243,5 +271,7 @@ namespace DAL_QLBH
             }
             return false;
         }
+        
+
     }
 }

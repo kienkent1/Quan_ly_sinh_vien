@@ -29,10 +29,10 @@ namespace GUI_QLBH
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanVien));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanVien));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.rbNhanvien = new System.Windows.Forms.RadioButton();
@@ -50,7 +50,6 @@ namespace GUI_QLBH
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txttimKiem = new System.Windows.Forms.TextBox();
-            this.dgvNhanvien = new System.Windows.Forms.DataGridView();
             this.btnDong = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
@@ -59,6 +58,7 @@ namespace GUI_QLBH
             this.btnDanhsach = new System.Windows.Forms.Button();
             this.btnTimkiem = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.dgvNhanvien = new System.Windows.Forms.DataGridView();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -257,51 +257,13 @@ namespace GUI_QLBH
             // txttimKiem
             // 
             this.txttimKiem.BackColor = System.Drawing.Color.LightGray;
-            this.txttimKiem.Location = new System.Drawing.Point(300, 58);
+            this.txttimKiem.Location = new System.Drawing.Point(319, 58);
             this.txttimKiem.Margin = new System.Windows.Forms.Padding(4);
             this.txttimKiem.Name = "txttimKiem";
             this.txttimKiem.Size = new System.Drawing.Size(256, 22);
-            this.txttimKiem.TabIndex = 8;
+            this.txttimKiem.TabIndex = 18;
             this.txttimKiem.Text = "Nhập tên nhân viên";
-            this.txttimKiem.TextChanged += new System.EventHandler(this.txttimKiem_TextChanged);
-            // 
-            // dgvNhanvien
-            // 
-            this.dgvNhanvien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvNhanvien.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvNhanvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvNhanvien.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvNhanvien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNhanvien.Location = new System.Drawing.Point(0, 191);
-            this.dgvNhanvien.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvNhanvien.Name = "dgvNhanvien";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvNhanvien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvNhanvien.RowHeadersWidth = 51;
-            this.dgvNhanvien.Size = new System.Drawing.Size(998, 245);
-            this.dgvNhanvien.TabIndex = 6;
-            this.dgvNhanvien.Click += new System.EventHandler(this.dgvNhanvien_Click);
+            this.txttimKiem.Click += new System.EventHandler(this.txttimKiem_Click);
             // 
             // btnDong
             // 
@@ -407,6 +369,44 @@ namespace GUI_QLBH
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // dgvNhanvien
+            // 
+            this.dgvNhanvien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvNhanvien.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNhanvien.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvNhanvien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvNhanvien.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvNhanvien.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvNhanvien.Location = new System.Drawing.Point(0, 191);
+            this.dgvNhanvien.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvNhanvien.Name = "dgvNhanvien";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvNhanvien.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvNhanvien.RowHeadersWidth = 51;
+            this.dgvNhanvien.Size = new System.Drawing.Size(998, 245);
+            this.dgvNhanvien.TabIndex = 6;
+            this.dgvNhanvien.Click += new System.EventHandler(this.dgvNhanvien_Click);
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -448,7 +448,6 @@ namespace GUI_QLBH
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txttimKiem;
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
@@ -458,5 +457,6 @@ namespace GUI_QLBH
         private System.Windows.Forms.Button btnTimkiem;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvNhanvien;
+        private System.Windows.Forms.TextBox txttimKiem;
     }
 }

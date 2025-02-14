@@ -158,7 +158,7 @@ namespace GUI_QLBH
             string phai = "Nam";
             if (rbnu.Checked == true)
                 phai = "Nữ";
-            if (!isInt || float.Parse(txtDienthoai.Text) < 0)// kiem tra so điện thoại
+            if (!isInt || float.Parse(txtDienthoai.Text) <0)// kiem tra so điện thoại
             {
                 MessageBox.Show("Bạn phải nhập số điện thoại >0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDienthoai.Focus();
@@ -236,11 +236,10 @@ namespace GUI_QLBH
             ResetValues();
         }
 
-        private void txttimKiem_TextChanged(object sender, EventArgs e)
+        private void txttimKiem_Click(object sender, EventArgs e)
         {
             txttimKiem.Text = null;
             txttimKiem.BackColor = Color.White;
-        
-    }
+        }
     }
 }

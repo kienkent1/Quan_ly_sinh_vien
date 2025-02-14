@@ -38,7 +38,7 @@ namespace GUI_QLBH
         }
         private void ResetValues()
         {
-            txttimKiem.Text = "Nhập tên nhân viên";
+            //txttimKiem.Text = "Nhập tên nhân viên";
             txtEmail.Text = null;
             txtTennv.Text = null;
             txtDiachi.Text = null;
@@ -344,16 +344,18 @@ namespace GUI_QLBH
             ResetValues();
         }
 
-        private void txttimKiem_TextChanged(object sender, EventArgs e)
-        {
-            txttimKiem.Text = null;
-            txttimKiem.BackColor = Color.White;
-        }
+      
 
         private void btnDanhsach_Click(object sender, EventArgs e)
         {
             ResetValues();
             LoadGridview_NhanVien();
+        }
+
+        private void txttimKiem_Click(object sender, EventArgs e)
+        {
+            txttimKiem.Text = null;
+            txttimKiem.BackColor = Color.White;
         }
     }
 }
