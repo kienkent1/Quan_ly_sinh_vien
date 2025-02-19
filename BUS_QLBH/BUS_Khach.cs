@@ -32,5 +32,10 @@ namespace BUS_QLBH
         {
             return dalKhach.SearchKhach(soDT);
         }
+        public bool KiemTraSoDienThoaiTonTai(string maKhach,string soDienThoai)
+        {
+            return dalKhach.KiemTraSoDienThoaiTonTai(maKhach,soDienThoai);
+        }
+
     }
 }

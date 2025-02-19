@@ -1,6 +1,6 @@
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\bin\Debug\DTO_QLBH.dll
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\bin\Debug\DTO_QLBH.pdb
-K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\obj\Debug\DTO_QLBH.csproj.AssemblyReference.cache
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\obj\Debug\DTO_QLBH.csproj.CoreCompileInputs.cache
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\obj\Debug\DTO_QLBH.dll
 K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\obj\Debug\DTO_QLBH.pdb
+K:\work\SOF2051\SOF2051_kienpxtb00438\Assignment_kienpxtb00438\DTO_QLBH\obj\Debug\DTO_QLBH.csproj.AssemblyReference.cache

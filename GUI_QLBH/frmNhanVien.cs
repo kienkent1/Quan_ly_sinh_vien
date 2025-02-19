@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +18,7 @@ namespace GUI_QLBH
     public partial class frmNhanVien : Form
     {
         BUS_NhanVien busNhanVien = new BUS_QLBH.BUS_NhanVien();
+        //private string selectmanv;
         public frmNhanVien()
         {
             InitializeComponent();
@@ -30,11 +32,12 @@ namespace GUI_QLBH
         private void LoadGridview_NhanVien()
         {
             dgvNhanvien.DataSource = busNhanVien.getNhanVien();
-            dgvNhanvien.Columns[0].HeaderText = "Email";
-            dgvNhanvien.Columns[1].HeaderText = "Tên Nhân Viên";
-            dgvNhanvien.Columns[2].HeaderText = "Địa chỉ";
-            dgvNhanvien.Columns[3].HeaderText = "Vai Trò";
-            dgvNhanvien.Columns[4].HeaderText = "Tình Trạng";
+            dgvNhanvien.Columns[0].Visible=false;
+            dgvNhanvien.Columns[1].HeaderText = "Email";
+            dgvNhanvien.Columns[2].HeaderText = "Tên Nhân Viên";
+            dgvNhanvien.Columns[3].HeaderText = "Địa chỉ";
+            dgvNhanvien.Columns[4].HeaderText = "Vai Trò";
+            dgvNhanvien.Columns[5].HeaderText = "Tình Trạng";
         }
         private void ResetValues()
         {
@@ -58,6 +61,7 @@ namespace GUI_QLBH
 
         private void btnBoqua_Click(object sender, EventArgs e)
         {
+            txttimKiem.Text = "Nhập tên nhân viên";
             ResetValues();
             LoadGridview_NhanVien();
         }
@@ -155,7 +159,9 @@ namespace GUI_QLBH
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            string email;
+            //string Manv = selectmanv.Trim();
+            string tenNV = txtTennv.Text.Trim();
+            string email=txtEmail.Text.Trim();
             int role = 0;//vai tro nhan vien
             if (rbQuantri.Checked)
                 role = 1;//quản trị
@@ -168,10 +174,24 @@ namespace GUI_QLBH
                 txtEmail.Focus();
                 return;
             }
+            if (busNhanVien.KiemTraEmailTonTai( email))
+            {
+                MessageBox.Show("Email này đã tồn tại. Vui lòng nhập email khác!",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
+            }
             else if (!IsValid(txtEmail.Text.Trim()))
             {
                 MessageBox.Show("Bạn phải nhập đúng định dang email", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtEmail.Focus();
+                return;
+            }
+            if (Regex.IsMatch(tenNV, @"\d"))
+            {
+                MessageBox.Show("Tên khách không được chứa số.",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTennv.Focus();
                 return;
             }
             if (txtTennv.Text.Trim().Length == 0)// kiem tra phai nhap data
@@ -231,6 +251,7 @@ namespace GUI_QLBH
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
                 //show data from selected row to controls
+                //selectmanv = dgvNhanvien.CurrentRow.Cells["MaNv"].Value.ToString();
                 txtEmail.Text = dgvNhanvien.CurrentRow.Cells["email"].Value.ToString();
                 txtTennv.Text = dgvNhanvien.CurrentRow.Cells["TenNv"].Value.ToString();
                 txtDiachi.Text = dgvNhanvien.CurrentRow.Cells["diaChi"].Value.ToString();
@@ -252,6 +273,9 @@ namespace GUI_QLBH
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            //string Manv = selectmanv.Trim();
+            string tenNV = txtTennv.Text.Trim();
+            
             if (txtTennv.Text.Trim().Length == 0)// kiem tra phai nhap data
             {
                 MessageBox.Show("Bạn phải nhập tên nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -262,6 +286,13 @@ namespace GUI_QLBH
             {
                 MessageBox.Show("Bạn phải nhập địa chỉ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDiachi.Focus();
+                return;
+            }
+            if (Regex.IsMatch(tenNV, @"\d"))
+            {
+                MessageBox.Show("Tên khách không được chứa số.",
+                                "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTennv.Focus();
                 return;
             }
             else

@@ -72,25 +72,47 @@ namespace GUI_QLBH
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            int maHang = int.Parse(txtMahang.Text);
-            if (MessageBox.Show("Bạn có chắc muốn xóa dữ liệu", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (string.IsNullOrWhiteSpace(txtMahang.Text))
             {
-                //do something if YES
+                MessageBox.Show("Bạn phải chọn sản phẩm để xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            int maHang = int.Parse(txtMahang.Text);
+            DialogResult dr = MessageBox.Show("Bạn có chắc chắn muốn xóa sản phẩm này không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                // Lấy đường dẫn ảnh trước khi xóa
+                string imagePath = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10)) + txtHinh.Text;
+
+               
+                //Xóa sản phẩm trong database
+                //MessageBox.Show(imagePath);
                 if (busHang.DeleteHang(maHang))
                 {
-                    MessageBox.Show("Xóa dữ liệu thành công");
+                    // Kiểm tra và xóa hình trong thư mục nếu tồn tại
+                    if (File.Exists(imagePath))
+                    {
+                        //MessageBox.Show("f");
+                        try
+                        {
+                            File.Delete(imagePath);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Không thể xóa hình ảnh: " + ex.Message);
+                        }
+                    }
+
+                    MessageBox.Show("Xóa sản phẩm thành công");
                     ResetValues();
                     LoadGridview_Hang(); // refresh datagridview
                 }
                 else
                 {
-                    MessageBox.Show("Xóa không thành công");
+                    MessageBox.Show("Xóa sản phẩm không thành công");
                 }
-            }
-            else
-            {
-                //do something if NO
-                ResetValues();
             }
         }
 
@@ -107,36 +129,45 @@ namespace GUI_QLBH
         private void btnLuu_Click(object sender, EventArgs e)
         {
             int intSoLuong;
-            bool isInt = int.TryParse(txtSoluong.Text.Trim().ToString(), out intSoLuong);//ep kiểu để kiểm tra là số hay chữ
+            bool isInt = int.TryParse(txtSoluong.Text.Trim().ToString(), out intSoLuong);
             float floatDonGiaNhap;
             bool isFloatNhap = float.TryParse(txtDongianhap.Text.Trim().ToString(), out floatDonGiaNhap);
             float floatDonGiaBan;
             bool isFloatBan = float.TryParse(txtDongiaban.Text.Trim().ToString(), out floatDonGiaBan);
-            if (txtTenhang.Text.Trim().Length == 0)// kiem tra phai nhap data
+            float dongianhap = float.Parse(txtDongianhap.Text);
+            float dongiaban = float.Parse(txtDongiaban.Text);
+
+            if (txtTenhang.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải nhập tên sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTenhang.Focus();
                 return;
             }
-            else if (!isInt || int.Parse(txtSoluong.Text) < 0)// kiem tra so nguyen > 0
+            else if (!isInt || int.Parse(txtSoluong.Text) < 0)
             {
                 MessageBox.Show("Bạn phải nhập số lượng sản phẩm >0, số nguyên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtSoluong.Focus();
                 return;
             }
-            else if (!isFloatNhap || float.Parse(txtDongianhap.Text) < 0)// kiem tra so > 0
+            else if (!isFloatNhap || float.Parse(txtDongianhap.Text) < 0)
             {
                 MessageBox.Show("Bạn phải nhập đơn giá nhập >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongianhap.Focus();
                 return;
             }
-            else if (!isFloatBan || float.Parse(txtDongiaban.Text) < 0)// kiem tra so > 0
+            else if (!isFloatBan || float.Parse(txtDongiaban.Text) < 0)
             {
                 MessageBox.Show("Bạn phải nhập đơn giá bán >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongiaban.Focus();
                 return;
             }
-            else if (txtHinh.Text.Trim().Length == 0)// kiem tra phai nhap hinh
+            else if (!isFloatNhap || dongianhap > dongiaban)
+            {
+                MessageBox.Show("Đơn giá nhập phải nhỏ hơn đơn giá bán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDongianhap.Focus();
+                return;
+            }
+            else if (txtHinh.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Bạn phải upload hình", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 btnMo.Focus();
@@ -144,12 +175,32 @@ namespace GUI_QLBH
             }
             else
             {
+                // Kiểm tra tên file ảnh và đổi tên nếu bị trùng
+                string directory = Path.Combine(Application.StartupPath.Substring(0, Application.StartupPath.Length - 10), "Images");
+                string newFileName = fileName;
+                int counter = 1;
+
+                // Nếu file đã tồn tại, thêm số thứ tự vào tên file
+                while (File.Exists(Path.Combine(directory, newFileName)))
+                {
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+                    string fileExtension = Path.GetExtension(fileName);
+                    newFileName = $"{fileNameWithoutExtension}({counter++}){fileExtension}";
+                }
+
+                // Tạo đường dẫn mới cho file ảnh
+                string newFilePath = Path.Combine(directory, newFileName);
+
+                // Thực hiện copy ảnh vào thư mục với tên mới
+                File.Copy(fileAddress, newFilePath, true); // copy ảnh với tên mới
+
+                // Cập nhật đối tượng DTO_Hang với đường dẫn mới của ảnh
                 DTO_Hang h = new DTO_Hang(txtTenhang.Text, int.Parse(txtSoluong.Text), float.Parse(txtDongianhap.Text),
-                    float.Parse(txtDongiaban.Text), "\\Images\\" + fileName, txtGhichu.Text, stremail);
+                    float.Parse(txtDongiaban.Text), "\\Images\\" + newFileName, txtGhichu.Text, stremail);
+
                 if (busHang.InsertHang(h))
                 {
                     MessageBox.Show("Thêm sản phẩm thành công");
-                    File.Copy(fileAddress, fileSavePath, true);// copy file hinh vao ung dung
                     ResetValues();
                     LoadGridview_Hang(); // refresh datagridview
                 }
@@ -157,28 +208,52 @@ namespace GUI_QLBH
                 {
                     MessageBox.Show("Thêm sản phẩm không thành công");
                 }
-
             }
         }
 
         private void btnMo_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlgOpen = new OpenFileDialog();
-            dlgOpen.Filter = "Bitmap(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|GIF(*.gif)|*.gif|All files(*.*)|*.*";
-            dlgOpen.FilterIndex = 2;
-            dlgOpen.Title = "Chọn ảnh minh hoạ cho sản phẩm";
-            if (dlgOpen.ShowDialog() == DialogResult.OK)
+            try
             {
-                fileAddress = dlgOpen.FileName;
-                pbHinh.Image = Image.FromFile(fileAddress);
-                fileName = Path.GetFileName(dlgOpen.FileName);
-                string saveDirectory = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
-                fileSavePath = saveDirectory + "\\Images\\" + fileName;// combine with file name*/
-                txtHinh.Text = "\\Images\\" + fileName;
+                OpenFileDialog dlgOpen = new OpenFileDialog();
+                dlgOpen.Filter = "Bitmap(*.bmp)|*.bmp|JPEG(*.jpg)|*.jpg|GIF(*.gif)|*.gif|All files(*.*)|*.*";
+                dlgOpen.FilterIndex = 2;
+                dlgOpen.Title = "Chọn ảnh minh hoạ cho sản phẩm";
+                if (dlgOpen.ShowDialog() == DialogResult.OK)
+                {
+                    fileAddress = dlgOpen.FileName;
+                    pbHinh.Image = Image.FromFile(fileAddress);
+                    fileName = Path.GetFileName(dlgOpen.FileName);
+                    string saveDirectory = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
+                    fileSavePath = saveDirectory + "\\Images\\" + fileName;// combine with file name*/
+                    txtHinh.Text = "\\Images\\" + fileName;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Lỗi: " + ex);
             }
         }
+        private string GetUniqueFileName(string filePath)
+        {
+            int count = 1;
+            string fileNameOnly = Path.GetFileNameWithoutExtension(filePath);
+            string extension = Path.GetExtension(filePath);
+            string path = Path.GetDirectoryName(filePath);
+            string newFullPath = filePath;
 
-   
+            while (File.Exists(newFullPath))
+            {
+                string tempFileName = $"{fileNameOnly}({count++})";
+                newFullPath = Path.Combine(path, tempFileName + extension);
+            }
+            return newFullPath;
+        }
+
+
+
+
 
         private void btnSua_Click(object sender, EventArgs e)
         {
@@ -188,6 +263,8 @@ namespace GUI_QLBH
             bool isFloatNhap = float.TryParse(txtDongianhap.Text.Trim().ToString(), out floatDonGiaNhap);
             float floatDonGiaBan;
             bool isFloatBan = float.TryParse(txtDongiaban.Text.Trim().ToString(), out floatDonGiaBan);
+            float dongianhap = float.Parse(txtDongianhap.Text);
+            float dongiaban = float.Parse(txtDongiaban.Text);
             if (txtTenhang.Text.Trim().Length == 0)// kiem tra phai nhap data
             {
                 MessageBox.Show("Bạn phải nhập tên sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -210,6 +287,12 @@ namespace GUI_QLBH
             {
                 MessageBox.Show("Bạn phải nhập đơn giá bán >0", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtDongiaban.Focus();
+                return;
+            }
+            else if (!isFloatNhap || dongianhap > dongiaban)// kiem tra so > 0
+            {
+                MessageBox.Show("Đơn giá nhập phải nhỏ hơn đơn giá bán", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtDongianhap.Focus();
                 return;
             }
             else if (txtHinh.Text.Trim().Length == 0)// kiem tra phai nhap hinh
@@ -228,8 +311,23 @@ namespace GUI_QLBH
                 {
                     if (busHang.UpdateHang(h))
                     {
-                        if (txtHinh.Text != checkUrlImage)//nêu có thay doi hình
+                        if (txtHinh.Text != checkUrlImage){//nêu có thay doi hình
+                            
                             File.Copy(fileAddress, fileSavePath, true);// copy file hinh vao ung dung
+                            string imagePath = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10)) + checkUrlImage;
+                            if (File.Exists(imagePath))
+                            {
+                                //MessageBox.Show("f");
+                                try
+                                {
+                                    File.Delete(imagePath);
+                                }
+                                catch (Exception ex)
+                                {
+                                    MessageBox.Show("Không thể xóa hình ảnh: " + ex.Message);
+                                }
+                            }
+                        }
                         MessageBox.Show("Sửa thành công");
                         ResetValues();
                         LoadGridview_Hang(); // refresh datagridview
@@ -274,17 +372,13 @@ namespace GUI_QLBH
             txttimKiem.BackColor = Color.White;
         }
 
-        private void btnDanhsach_Click(object sender, EventArgs e)
-        {
-            ResetValues();
-            LoadGridview_Hang();
-        }
+        
 
         private void btnThem_Click(object sender, EventArgs e)
         {
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-            btnBoqua.Enabled = true;
+            btds.Enabled = true;
             btnLuu.Enabled = true;
             btnThem.Enabled = false;
             btnMo.Enabled = true;
@@ -308,44 +402,50 @@ namespace GUI_QLBH
         {
             try
             {
+                // Tạo đường dẫn đầy đủ đến thư mục chứa ảnh
                 string saveDirectory = Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10));
-            if (dgvhang.Rows.Count > 1)
-            {
-                btnMo.Enabled = true;
-                btnLuu.Enabled = false;
-                txtTenhang.Enabled = true;
-                txtSoluong.Enabled = true;
-                txtDongianhap.Enabled = true;
-                txtDongiaban.Enabled = true;
-                txtGhichu.Enabled = true;
-                txtTenhang.Focus();
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                txtMahang.Text = dgvhang.CurrentRow.Cells["MaHang"].Value.ToString();
-                txtTenhang.Text = dgvhang.CurrentRow.Cells["TenHang"].Value.ToString();
-                txtSoluong.Text = dgvhang.CurrentRow.Cells["SoLuong"].Value.ToString();
-                txtDongianhap.Text = dgvhang.CurrentRow.Cells["DonGiaNhap"].Value.ToString();
-                txtDongiaban.Text = dgvhang.CurrentRow.Cells["DonGiaBan"].Value.ToString();
-                txtHinh.Text = dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString();
-                checkUrlImage = txtHinh.Text;//giữ đường dẫn file hình
-                pbHinh.Image = Image.FromFile(saveDirectory + dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString());
-                txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
-
-                    
+                if (dgvhang.Rows.Count > 1)
+                {
+                    btnMo.Enabled = true;
+                    btnLuu.Enabled = false;
+                    txtTenhang.Enabled = true;
+                    txtSoluong.Enabled = true;
+                    txtDongianhap.Enabled = true;
+                    txtDongiaban.Enabled = true;
+                    txtGhichu.Enabled = true;
+                    txtTenhang.Focus();
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
+                    txtMahang.Text = dgvhang.CurrentRow.Cells["MaHang"].Value.ToString();
+                    txtTenhang.Text = dgvhang.CurrentRow.Cells["TenHang"].Value.ToString();
+                    txtSoluong.Text = dgvhang.CurrentRow.Cells["SoLuong"].Value.ToString();
+                    txtDongianhap.Text = dgvhang.CurrentRow.Cells["DonGiaNhap"].Value.ToString();
+                    txtDongiaban.Text = dgvhang.CurrentRow.Cells["DonGiaBan"].Value.ToString();
+                    txtHinh.Text = dgvhang.CurrentRow.Cells["HinhAnh"].Value.ToString();
+                    checkUrlImage = txtHinh.Text;//giữ đường dẫn file hình
+                    using (Image temp = Image.FromFile(Application.StartupPath.Substring(0, (Application.StartupPath.Length - 10)) + txtHinh.Text))
+                    {
+                        pbHinh.Image = new Bitmap(temp);
+                    }
+                    txtGhichu.Text = dgvhang.CurrentRow.Cells["GhiChu"].Value.ToString();
                 }
-            else
-            {
-                MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+                else
+                {
+                    MessageBox.Show("Bảng không tồn tại dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Đã xảy ra lỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
         
+
+        private void btds_Click(object sender, EventArgs e)
+        {
+            ResetValues();
+            LoadGridview_Hang();
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace DTO_QLBH
         private string emailNv;
         private string matKhau;
         private int tinhTrang;
+        private string manv;
         public string TenNhanVien
         {
             get
@@ -81,7 +82,18 @@ namespace DTO_QLBH
                 tinhTrang = value;
             }
         }
-        public DTO_NhanVien(string emailNv, string tenNv, string diaChi, int vaiTro, int tinhTrang, string matKhau)
+        public string Manv
+        {
+            get
+            {
+                return manv;
+            }
+            set
+            {
+                manv = value;
+            }
+        }
+        public DTO_NhanVien(string emailNv, string tenNv, string diaChi, int vaiTro, int tinhTrang, string matKhau, string manv)
         {
             this.tenNhanVien = tenNv;
             this.diaChi = diaChi;
@@ -89,6 +101,7 @@ namespace DTO_QLBH
             this.emailNv = emailNv;
             this.tinhTrang = tinhTrang;
             this.matKhau = matKhau;
+            this.manv = manv;
         }
         public DTO_NhanVien(string emailNv, string tenNv,
             string diaChi, int vaiTro, int tinhTrang)
@@ -98,7 +111,7 @@ namespace DTO_QLBH
             this.vaiTro = vaiTro;
             this.emailNv = emailNv;
             this.tinhTrang = tinhTrang;
-
+            
         }
         public DTO_NhanVien()
         { }

@@ -30,6 +30,32 @@ namespace DAL_QLBH
             }
 
         }
+        public bool KiemTraEmailTonTai( string Email)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "KiemTraEmailTonTai";
+
+               
+                cmd.Parameters.AddWithValue("@Email", Email);
+
+                int result = Convert.ToInt32(cmd.ExecuteScalar());
+                return result == 1; // Nếu trả về 1, số điện thoại đã tồn tại
+            }
+            catch (Exception e)
+            {
+                //MessageBox.Show("Lỗi kiểm tra số điện thoại: " + e.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
         public bool insertNhanVien(DTO_NhanVien nv)
         {
             try
@@ -271,7 +297,31 @@ namespace DAL_QLBH
             }
             return false;
         }
-        
+        public string GetCurrentPasswordHash(string email)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetCurrentPasswordHash"; // Tên stored procedure
+                cmd.Parameters.AddWithValue("email", email); // Tham số @email
+
+                object result = cmd.ExecuteScalar();
+                return result?.ToString();
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ (ghi log, hiển thị thông báo, v.v.)
+                Console.WriteLine("Lỗi khi lấy hash mật khẩu: " + ex.Message);
+                return null;
+            }
+            finally
+            {
+                _conn.Close();
+            }
+        }
 
     }
 }

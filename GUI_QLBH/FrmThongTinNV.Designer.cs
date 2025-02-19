@@ -201,6 +201,7 @@ namespace GUI_QLBH
             this.Controls.Add(this.label1);
             this.Name = "FrmThongTinNV";
             this.Text = "FrmThongTinNV";
+         
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

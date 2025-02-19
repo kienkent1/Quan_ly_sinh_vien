@@ -284,6 +284,7 @@ namespace GUI_QLBH
             this.btnDanhsach.TabIndex = 15;
             this.btnDanhsach.Text = "&Danh Sách";
             this.btnDanhsach.UseVisualStyleBackColor = true;
+            this.btnDanhsach.Click += new System.EventHandler(this.btnDanhsach_Click);
             // 
             // btnTimkiem
             // 

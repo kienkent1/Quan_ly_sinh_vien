@@ -32,6 +32,9 @@ namespace GUI_QLBH
         private void Login_Load(object sender, EventArgs e)
         {
             FrmMain.session = 0;
+            txtemail.Text = Properties.Settings.Default.EMAIL;
+            txtmatkhau.Text = Properties.Settings.Default.PASSWORD;
+            checkBox1.Checked = Properties.Settings.Default.REMEMBER;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -52,11 +55,37 @@ namespace GUI_QLBH
                 {
                     if (busNhanVien.NhanVienDangNhap(nv))
                     {
+                        string defaultPasswordHash = encryption("abc123");
+                        bool isFirstLogin = (nv.MatKhau == defaultPasswordHash);
                         FrmMain.mail = nv.EmailNV;
                         DataTable dt = busNhanVien.VaiTroNhanVien(nv.EmailNV);
                         vaitro = dt.Rows[0][0].ToString();
                         MessageBox.Show("Đăng nhập thành công");
                         FrmMain.session = 1;
+                        if (isFirstLogin)
+                        {
+                            MessageBox.Show("Bạn phải đổi mật khẩu lần đầu đăng nhập");
+                            this.Close();
+                            FrmThongTinNV frmProfile = new FrmThongTinNV(nv.EmailNV);
+                            frmProfile.ForcePasswordChange = true; // Thêm thuộc tính mới
+                            frmProfile.ShowDialog();
+                            Application.Restart();
+                            return;
+                        }
+                        if (checkBox1.Checked)
+                        {
+                            Properties.Settings.Default.EMAIL = txtemail.Text;
+                            Properties.Settings.Default.PASSWORD = txtmatkhau.Text;
+                            Properties.Settings.Default.REMEMBER = true;
+                        }
+                        else
+                        {
+                            Properties.Settings.Default.EMAIL = "";
+                            Properties.Settings.Default.PASSWORD = "";
+                            Properties.Settings.Default.REMEMBER = false;
+                        }
+
+                        Properties.Settings.Default.Save();
                         this.Close();
                     }
                     else

@@ -17,6 +17,7 @@ namespace GUI_QLBH
 {
     public partial class FrmThongTinNV : Form
     {
+        public bool ForcePasswordChange { get; set; } = false;
         Thread th;//using System.Threading;
         string stremail;//nhận email tư FrmMain
         BUS_NhanVien busNhanVien = new BUS_QLBH.BUS_NhanVien();
@@ -71,22 +72,48 @@ namespace GUI_QLBH
             }
             else
             {
-                if (MessageBox.Show("Bạn có chắc muốn cập nhật mật khẩu", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                // Thêm kiểm tra mật khẩu mặc định
+                string defaultPasswordHash = "23315424196402035621";
+                string currentPasswordHash = busNhanVien.GetCurrentPasswordHash(stremail);
+                //MessageBox.Show(defaultPasswordHash);
+
+                //Nếu là lần đầu đăng nhập và mật khẩu hiện tại không phải là mật khẩu mặc định
+                if (ForcePasswordChange && currentPasswordHash != defaultPasswordHash)
                 {
-                    //do something if YES
+                    MessageBox.Show("Bạn đã đổi mật khẩu từ trước", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Xác nhận đổi mật khẩu
+                if (MessageBox.Show("Bạn có chắc muốn cập nhật mật khẩu?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    // Mã hóa mật khẩu
                     string matkhaumoi = encryption(txtmatkhaumoi.Text);
                     string matkhaucu = encryption(txtmatkhaucu.Text);
+
+                    // Cập nhật mật khẩu
                     if (busNhanVien.UpdateMatKhau(txtemail.Text, matkhaucu, matkhaumoi))
                     {
-                        FrmMain.profile = 1;// cập nhật pass thành cong
-                        FrmMain.session = 0;//đưa về tình trạng chưa đăng nhâp
-                        SendMail(stremail, txtmatkhaumoi2.Text);
-                        MessageBox.Show("Cập nhật mật khẩu thành công, bạn cần phải đăng nhập lại");
-                        this.Close();
+                        // Nếu là lần đầu đăng nhập
+                        if (ForcePasswordChange)
+                        {
+                            MessageBox.Show("Đổi mật khẩu thành công! Bạn có thể sử dụng hệ thống", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                            /*Application.Restart();*/ // Khởi động lại ứng dụng để đăng nhập lại
+                        }
+                        else
+                        {
+                            // Xử lý thông thường
+                            FrmMain.profile = 1; // Cập nhật pass thành công
+                            FrmMain.session = 0; // Đưa về tình trạng chưa đăng nhập
+                            SendMail(stremail, txtmatkhaumoi2.Text); // Gửi email thông báo
+                            MessageBox.Show("Cập nhật mật khẩu thành công, bạn cần phải đăng nhập lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Mât khẩu cũ không đúng,Cập nhật mật khẩu không thành công");
+                        MessageBox.Show("Mật khẩu cũ không đúng, cập nhật mật khẩu không thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txtmatkhaucu.Text = null;
                         txtmatkhaumoi.Text = null;
                         txtmatkhaumoi2.Text = null;
@@ -94,7 +121,7 @@ namespace GUI_QLBH
                 }
                 else
                 {
-                    //do something if NO
+                    // Nếu người dùng chọn "No" trong hộp thoại xác nhận
                     txtmatkhaucu.Text = null;
                     txtmatkhaumoi.Text = null;
                     txtmatkhaumoi2.Text = null;
@@ -162,5 +189,7 @@ namespace GUI_QLBH
         {
             this.Close();
         }
+
+       
     }
 }

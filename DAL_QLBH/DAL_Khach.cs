@@ -30,6 +30,38 @@ namespace DAL_QLBH
             }
         }
 
+        public bool KiemTraSoDienThoaiTonTai(string maKhach, string soDienThoai)
+        {
+            try
+            {
+                _conn.Open();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = _conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "KiemTraSoDienThoaiTonTai";
+
+                cmd.Parameters.AddWithValue("@MaKhach", maKhach);
+                cmd.Parameters.AddWithValue("@DienThoai", soDienThoai);
+
+                int result = Convert.ToInt32(cmd.ExecuteScalar());
+                return result == 1; // Nếu trả về 1, số điện thoại đã tồn tại
+            }
+            catch (Exception e)
+            {
+                //MessageBox.Show("Lỗi kiểm tra số điện thoại: " + e.Message);
+            }
+            finally
+            {
+                _conn.Close();
+            }
+            return false;
+        }
+
+
+
+
+
+
         public bool insertKhach(DTO_Khach khach)
         {
             try
@@ -39,17 +71,20 @@ namespace DAL_QLBH
                 cmd.Connection = _conn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "InsertDataIntoTblKhach";
+
+                cmd.Parameters.AddWithValue("Makhach", khach.Makhach); // Thêm mã khách hàng
                 cmd.Parameters.AddWithValue("Dienthoai", khach.SoDienThoai);
                 cmd.Parameters.AddWithValue("TenKhach", khach.TenKhach);
                 cmd.Parameters.AddWithValue("DiaChi", khach.DiaChi);
                 cmd.Parameters.AddWithValue("phai", khach.Phai);
                 cmd.Parameters.AddWithValue("Email", khach.EmailKhach);
+
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
             catch (Exception e)
             {
-
+                // Xử lý lỗi (log hoặc throw exception)
             }
             finally
             {
@@ -67,16 +102,19 @@ namespace DAL_QLBH
                 cmd.Connection = _conn;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "UpdateDataIntoTblKhach";
-                cmd.Parameters.AddWithValue("Dienthoai", khach.SoDienThoai);
-                cmd.Parameters.AddWithValue("TenKhach", khach.TenKhach);
-                cmd.Parameters.AddWithValue("DiaChi", khach.DiaChi);
-                cmd.Parameters.AddWithValue("phai", khach.Phai);
+
+                cmd.Parameters.AddWithValue("@MaKhach", khach.Makhach);
+                cmd.Parameters.AddWithValue("@Dienthoai", khach.SoDienThoai);
+                cmd.Parameters.AddWithValue("@TenKhach", khach.TenKhach);
+                cmd.Parameters.AddWithValue("@DiaChi", khach.DiaChi);
+                cmd.Parameters.AddWithValue("@phai", khach.Phai);
+
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
             catch (Exception e)
             {
-
+                //MessageBox.Show($"Lỗi khi cập nhật khách hàng: {e.Message}");
             }
             finally
             {
@@ -85,7 +123,7 @@ namespace DAL_QLBH
             return false;
         }
 
-        public bool DeleteKhach(string soDT)
+        public bool DeleteKhach(string maKhach)
         {
             try
             {
@@ -93,14 +131,15 @@ namespace DAL_QLBH
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "DeleteDataFromtblKhach";
-                cmd.Parameters.AddWithValue("dienthoai", soDT);
+                cmd.Parameters.AddWithValue("@MaKhach", maKhach);
                 cmd.Connection = _conn;
+
                 if (cmd.ExecuteNonQuery() > 0)
                     return true;
             }
             catch (Exception e)
             {
-
+                //MessageBox.Show($"Lỗi khi xóa khách hàng: {e.Message}");
             }
             finally
             {

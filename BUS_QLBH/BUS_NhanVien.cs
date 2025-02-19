@@ -73,6 +73,13 @@ namespace BUS_QLBH
         {
             return dalNhanVien.TinhTrangNhanVien(email);
         }
-
+        public string GetCurrentPasswordHash(string email)
+        {
+            return dalNhanVien.GetCurrentPasswordHash(email);
+        }
+        public bool KiemTraEmailTonTai( string email)
+        {
+            return dalNhanVien.KiemTraEmailTonTai( email);
+        }
     }
 }

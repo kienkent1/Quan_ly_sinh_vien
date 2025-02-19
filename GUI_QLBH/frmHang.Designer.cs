@@ -32,8 +32,6 @@ namespace GUI_QLBH
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHang));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pbHinh = new System.Windows.Forms.PictureBox();
-            this.btnMo = new System.Windows.Forms.Button();
             this.txtGhichu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtHinh = new System.Windows.Forms.TextBox();
@@ -52,18 +50,21 @@ namespace GUI_QLBH
             this.panel2 = new System.Windows.Forms.Panel();
             this.txttimKiem = new System.Windows.Forms.TextBox();
             this.btnDong = new System.Windows.Forms.Button();
+            this.btnTimkiem = new System.Windows.Forms.Button();
+            this.dgvhang = new System.Windows.Forms.DataGridView();
+            this.btxoa = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
-            this.btnBoqua = new System.Windows.Forms.Button();
-            this.btnDanhsach = new System.Windows.Forms.Button();
-            this.btnTimkiem = new System.Windows.Forms.Button();
+            this.btds = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.dgvhang = new System.Windows.Forms.DataGridView();
+            this.pbHinh = new System.Windows.Forms.PictureBox();
+            this.btnMo = new System.Windows.Forms.Button();
+            this.btnDanhsach = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhang)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -97,29 +98,6 @@ namespace GUI_QLBH
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(993, 241);
             this.panel1.TabIndex = 43;
-            // 
-            // pbHinh
-            // 
-            this.pbHinh.Location = new System.Drawing.Point(816, 49);
-            this.pbHinh.Margin = new System.Windows.Forms.Padding(4);
-            this.pbHinh.Name = "pbHinh";
-            this.pbHinh.Size = new System.Drawing.Size(173, 180);
-            this.pbHinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHinh.TabIndex = 32;
-            this.pbHinh.TabStop = false;
-            // 
-            // btnMo
-            // 
-            this.btnMo.Image = ((System.Drawing.Image)(resources.GetObject("btnMo.Image")));
-            this.btnMo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMo.Location = new System.Drawing.Point(682, 45);
-            this.btnMo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMo.Name = "btnMo";
-            this.btnMo.Size = new System.Drawing.Size(125, 28);
-            this.btnMo.TabIndex = 31;
-            this.btnMo.Text = "Mở Hình";
-            this.btnMo.UseVisualStyleBackColor = true;
-            this.btnMo.Click += new System.EventHandler(this.btnMo_Click);
             // 
             // txtGhichu
             // 
@@ -276,13 +254,13 @@ namespace GUI_QLBH
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btxoa);
             this.panel2.Controls.Add(this.txttimKiem);
             this.panel2.Controls.Add(this.btnDong);
             this.panel2.Controls.Add(this.btnXoa);
             this.panel2.Controls.Add(this.btnSua);
             this.panel2.Controls.Add(this.btnLuu);
-            this.panel2.Controls.Add(this.btnBoqua);
-            this.panel2.Controls.Add(this.btnDanhsach);
+            this.panel2.Controls.Add(this.btds);
             this.panel2.Controls.Add(this.btnTimkiem);
             this.panel2.Controls.Add(this.btnThem);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -314,66 +292,6 @@ namespace GUI_QLBH
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnXoa.Location = new System.Drawing.Point(180, 68);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(116, 47);
-            this.btnXoa.TabIndex = 10;
-            this.btnXoa.Text = "&Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
-            // btnSua
-            // 
-            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSua.Location = new System.Drawing.Point(321, 68);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(116, 47);
-            this.btnSua.TabIndex = 11;
-            this.btnSua.Text = "&Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
-            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLuu.Location = new System.Drawing.Point(462, 68);
-            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(116, 47);
-            this.btnLuu.TabIndex = 12;
-            this.btnLuu.Text = "&Lưu";
-            this.btnLuu.UseVisualStyleBackColor = true;
-            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
-            // 
-            // btnBoqua
-            // 
-            this.btnBoqua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBoqua.Location = new System.Drawing.Point(604, 68);
-            this.btnBoqua.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBoqua.Name = "btnBoqua";
-            this.btnBoqua.Size = new System.Drawing.Size(116, 47);
-            this.btnBoqua.TabIndex = 13;
-            this.btnBoqua.Text = "&Bỏ Qua";
-            this.btnBoqua.UseVisualStyleBackColor = true;
-            this.btnBoqua.Click += new System.EventHandler(this.btnBoqua_Click);
-            // 
-            // btnDanhsach
-            // 
-            this.btnDanhsach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDanhsach.Location = new System.Drawing.Point(745, 68);
-            this.btnDanhsach.Margin = new System.Windows.Forms.Padding(4);
-            this.btnDanhsach.Name = "btnDanhsach";
-            this.btnDanhsach.Size = new System.Drawing.Size(116, 47);
-            this.btnDanhsach.TabIndex = 15;
-            this.btnDanhsach.Text = "&Danh Sách";
-            this.btnDanhsach.UseVisualStyleBackColor = true;
-            this.btnDanhsach.Click += new System.EventHandler(this.btnDanhsach_Click);
-            // 
             // btnTimkiem
             // 
             this.btnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -385,18 +303,6 @@ namespace GUI_QLBH
             this.btnTimkiem.Text = "&Tim Kiếm";
             this.btnTimkiem.UseVisualStyleBackColor = true;
             this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThem.Location = new System.Drawing.Point(38, 68);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(116, 47);
-            this.btnThem.TabIndex = 9;
-            this.btnThem.Text = "&Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // dgvhang
             // 
@@ -410,6 +316,120 @@ namespace GUI_QLBH
             this.dgvhang.TabIndex = 45;
             this.dgvhang.Click += new System.EventHandler(this.dgvhang_Click);
             // 
+            // btxoa
+            // 
+            this.btxoa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btxoa.Image = global::GUI_QLBH.Properties.Resources.contract__2_;
+            this.btxoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btxoa.Location = new System.Drawing.Point(728, 68);
+            this.btxoa.Margin = new System.Windows.Forms.Padding(4);
+            this.btxoa.Name = "btxoa";
+            this.btxoa.Size = new System.Drawing.Size(113, 47);
+            this.btxoa.TabIndex = 33;
+            this.btxoa.Text = "&Danh sách";
+            this.btxoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btxoa.UseVisualStyleBackColor = true;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Image = global::GUI_QLBH.Properties.Resources.delete__1_;
+            this.btnXoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnXoa.Location = new System.Drawing.Point(180, 68);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(4);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(116, 47);
+            this.btnXoa.TabIndex = 10;
+            this.btnXoa.Text = "&Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Image = global::GUI_QLBH.Properties.Resources.pencil__1_;
+            this.btnSua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSua.Location = new System.Drawing.Point(321, 68);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(116, 47);
+            this.btnSua.TabIndex = 11;
+            this.btnSua.Text = "&Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Image = global::GUI_QLBH.Properties.Resources.diskette__1_;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(462, 68);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(116, 47);
+            this.btnLuu.TabIndex = 12;
+            this.btnLuu.Text = "&Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
+            // 
+            // btds
+            // 
+            this.btds.Image = global::GUI_QLBH.Properties.Resources.left3;
+            this.btds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btds.Location = new System.Drawing.Point(604, 68);
+            this.btds.Margin = new System.Windows.Forms.Padding(4);
+            this.btds.Name = "btds";
+            this.btds.Size = new System.Drawing.Size(116, 47);
+            this.btds.TabIndex = 13;
+            this.btds.Text = "&Bỏ Qua";
+            this.btds.UseVisualStyleBackColor = true;
+            this.btds.Click += new System.EventHandler(this.btds_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Image = global::GUI_QLBH.Properties.Resources.plus__1_;
+            this.btnThem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThem.Location = new System.Drawing.Point(38, 68);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(116, 47);
+            this.btnThem.TabIndex = 9;
+            this.btnThem.Text = "&Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // pbHinh
+            // 
+            this.pbHinh.Location = new System.Drawing.Point(816, 49);
+            this.pbHinh.Margin = new System.Windows.Forms.Padding(4);
+            this.pbHinh.Name = "pbHinh";
+            this.pbHinh.Size = new System.Drawing.Size(173, 180);
+            this.pbHinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbHinh.TabIndex = 32;
+            this.pbHinh.TabStop = false;
+            // 
+            // btnMo
+            // 
+            this.btnMo.Image = ((System.Drawing.Image)(resources.GetObject("btnMo.Image")));
+            this.btnMo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMo.Location = new System.Drawing.Point(682, 45);
+            this.btnMo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMo.Name = "btnMo";
+            this.btnMo.Size = new System.Drawing.Size(125, 28);
+            this.btnMo.TabIndex = 31;
+            this.btnMo.Text = "Mở Hình";
+            this.btnMo.UseVisualStyleBackColor = true;
+            this.btnMo.Click += new System.EventHandler(this.btnMo_Click);
+            // 
+            // btnDanhsach
+            // 
+            this.btnDanhsach.Image = global::GUI_QLBH.Properties.Resources.contract;
+            this.btnDanhsach.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDanhsach.Location = new System.Drawing.Point(604, 556);
+            this.btnDanhsach.Margin = new System.Windows.Forms.Padding(4);
+            this.btnDanhsach.Name = "btnDanhsach";
+            this.btnDanhsach.Size = new System.Drawing.Size(116, 47);
+            this.btnDanhsach.TabIndex = 15;
+            this.btnDanhsach.Text = "&Danh Sách";
+            this.btnDanhsach.UseVisualStyleBackColor = true;
+            // 
             // frmHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -419,15 +439,16 @@ namespace GUI_QLBH
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
+            this.Controls.Add(this.btnDanhsach);
             this.Name = "frmHang";
             this.Text = "frmHang";
             this.Load += new System.EventHandler(this.frmHang_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhang)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -459,10 +480,11 @@ namespace GUI_QLBH
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Button btnLuu;
-        private System.Windows.Forms.Button btnBoqua;
+        private System.Windows.Forms.Button btds;
         private System.Windows.Forms.Button btnDanhsach;
         private System.Windows.Forms.Button btnTimkiem;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.DataGridView dgvhang;
+        private System.Windows.Forms.Button btxoa;
     }
 }
