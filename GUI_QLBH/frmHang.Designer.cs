@@ -32,6 +32,8 @@ namespace GUI_QLBH
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHang));
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pbHinh = new System.Windows.Forms.PictureBox();
+            this.btnMo = new System.Windows.Forms.Button();
             this.txtGhichu = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtHinh = new System.Windows.Forms.TextBox();
@@ -48,23 +50,21 @@ namespace GUI_QLBH
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btxoa = new System.Windows.Forms.Button();
             this.txttimKiem = new System.Windows.Forms.TextBox();
             this.btnDong = new System.Windows.Forms.Button();
-            this.btnTimkiem = new System.Windows.Forms.Button();
-            this.dgvhang = new System.Windows.Forms.DataGridView();
-            this.btxoa = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btds = new System.Windows.Forms.Button();
+            this.btnTimkiem = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.pbHinh = new System.Windows.Forms.PictureBox();
-            this.btnMo = new System.Windows.Forms.Button();
+            this.dgvhang = new System.Windows.Forms.DataGridView();
             this.btnDanhsach = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).BeginInit();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -96,8 +96,31 @@ namespace GUI_QLBH
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(993, 241);
+            this.panel1.Size = new System.Drawing.Size(1009, 241);
             this.panel1.TabIndex = 43;
+            // 
+            // pbHinh
+            // 
+            this.pbHinh.Location = new System.Drawing.Point(816, 49);
+            this.pbHinh.Margin = new System.Windows.Forms.Padding(4);
+            this.pbHinh.Name = "pbHinh";
+            this.pbHinh.Size = new System.Drawing.Size(173, 180);
+            this.pbHinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbHinh.TabIndex = 32;
+            this.pbHinh.TabStop = false;
+            // 
+            // btnMo
+            // 
+            this.btnMo.Image = ((System.Drawing.Image)(resources.GetObject("btnMo.Image")));
+            this.btnMo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMo.Location = new System.Drawing.Point(682, 45);
+            this.btnMo.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMo.Name = "btnMo";
+            this.btnMo.Size = new System.Drawing.Size(125, 28);
+            this.btnMo.TabIndex = 31;
+            this.btnMo.Text = "Mở Hình";
+            this.btnMo.UseVisualStyleBackColor = true;
+            this.btnMo.Click += new System.EventHandler(this.btnMo_Click);
             // 
             // txtGhichu
             // 
@@ -266,8 +289,22 @@ namespace GUI_QLBH
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 597);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(993, 133);
+            this.panel2.Size = new System.Drawing.Size(1009, 133);
             this.panel2.TabIndex = 44;
+            // 
+            // btxoa
+            // 
+            this.btxoa.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btxoa.Image = global::GUI_QLBH.Properties.Resources.contract__2_;
+            this.btxoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btxoa.Location = new System.Drawing.Point(751, 68);
+            this.btxoa.Margin = new System.Windows.Forms.Padding(4);
+            this.btxoa.Name = "btxoa";
+            this.btxoa.Size = new System.Drawing.Size(127, 47);
+            this.btxoa.TabIndex = 33;
+            this.btxoa.Text = "&Danh sách";
+            this.btxoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btxoa.UseVisualStyleBackColor = true;
             // 
             // txttimKiem
             // 
@@ -282,53 +319,17 @@ namespace GUI_QLBH
             // 
             // btnDong
             // 
+            this.btnDong.Image = global::GUI_QLBH.Properties.Resources.close;
             this.btnDong.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDong.Location = new System.Drawing.Point(886, 68);
             this.btnDong.Margin = new System.Windows.Forms.Padding(4);
             this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(116, 47);
+            this.btnDong.Size = new System.Drawing.Size(110, 47);
             this.btnDong.TabIndex = 16;
             this.btnDong.Text = "&Đóng";
+            this.btnDong.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
-            // 
-            // btnTimkiem
-            // 
-            this.btnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTimkiem.Location = new System.Drawing.Point(604, 14);
-            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTimkiem.Name = "btnTimkiem";
-            this.btnTimkiem.Size = new System.Drawing.Size(116, 47);
-            this.btnTimkiem.TabIndex = 14;
-            this.btnTimkiem.Text = "&Tim Kiếm";
-            this.btnTimkiem.UseVisualStyleBackColor = true;
-            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
-            // 
-            // dgvhang
-            // 
-            this.dgvhang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvhang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvhang.Location = new System.Drawing.Point(0, 241);
-            this.dgvhang.Name = "dgvhang";
-            this.dgvhang.RowHeadersWidth = 51;
-            this.dgvhang.RowTemplate.Height = 24;
-            this.dgvhang.Size = new System.Drawing.Size(993, 356);
-            this.dgvhang.TabIndex = 45;
-            this.dgvhang.Click += new System.EventHandler(this.dgvhang_Click);
-            // 
-            // btxoa
-            // 
-            this.btxoa.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btxoa.Image = global::GUI_QLBH.Properties.Resources.contract__2_;
-            this.btxoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btxoa.Location = new System.Drawing.Point(728, 68);
-            this.btxoa.Margin = new System.Windows.Forms.Padding(4);
-            this.btxoa.Name = "btxoa";
-            this.btxoa.Size = new System.Drawing.Size(113, 47);
-            this.btxoa.TabIndex = 33;
-            this.btxoa.Text = "&Danh sách";
-            this.btxoa.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btxoa.UseVisualStyleBackColor = true;
             // 
             // btnXoa
             // 
@@ -376,11 +377,24 @@ namespace GUI_QLBH
             this.btds.Location = new System.Drawing.Point(604, 68);
             this.btds.Margin = new System.Windows.Forms.Padding(4);
             this.btds.Name = "btds";
-            this.btds.Size = new System.Drawing.Size(116, 47);
+            this.btds.Size = new System.Drawing.Size(124, 47);
             this.btds.TabIndex = 13;
             this.btds.Text = "&Bỏ Qua";
+            this.btds.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btds.UseVisualStyleBackColor = true;
             this.btds.Click += new System.EventHandler(this.btds_Click);
+            // 
+            // btnTimkiem
+            // 
+            this.btnTimkiem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTimkiem.Location = new System.Drawing.Point(604, 14);
+            this.btnTimkiem.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTimkiem.Name = "btnTimkiem";
+            this.btnTimkiem.Size = new System.Drawing.Size(116, 47);
+            this.btnTimkiem.TabIndex = 14;
+            this.btnTimkiem.Text = "&Tim Kiếm";
+            this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // btnThem
             // 
@@ -395,28 +409,17 @@ namespace GUI_QLBH
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // pbHinh
+            // dgvhang
             // 
-            this.pbHinh.Location = new System.Drawing.Point(816, 49);
-            this.pbHinh.Margin = new System.Windows.Forms.Padding(4);
-            this.pbHinh.Name = "pbHinh";
-            this.pbHinh.Size = new System.Drawing.Size(173, 180);
-            this.pbHinh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbHinh.TabIndex = 32;
-            this.pbHinh.TabStop = false;
-            // 
-            // btnMo
-            // 
-            this.btnMo.Image = ((System.Drawing.Image)(resources.GetObject("btnMo.Image")));
-            this.btnMo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMo.Location = new System.Drawing.Point(682, 45);
-            this.btnMo.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMo.Name = "btnMo";
-            this.btnMo.Size = new System.Drawing.Size(125, 28);
-            this.btnMo.TabIndex = 31;
-            this.btnMo.Text = "Mở Hình";
-            this.btnMo.UseVisualStyleBackColor = true;
-            this.btnMo.Click += new System.EventHandler(this.btnMo_Click);
+            this.dgvhang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvhang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvhang.Location = new System.Drawing.Point(0, 241);
+            this.dgvhang.Name = "dgvhang";
+            this.dgvhang.RowHeadersWidth = 51;
+            this.dgvhang.RowTemplate.Height = 24;
+            this.dgvhang.Size = new System.Drawing.Size(1009, 356);
+            this.dgvhang.TabIndex = 45;
+            this.dgvhang.Click += new System.EventHandler(this.dgvhang_Click);
             // 
             // btnDanhsach
             // 
@@ -434,7 +437,7 @@ namespace GUI_QLBH
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(993, 730);
+            this.ClientSize = new System.Drawing.Size(1009, 730);
             this.Controls.Add(this.dgvhang);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -445,10 +448,10 @@ namespace GUI_QLBH
             this.Load += new System.EventHandler(this.frmHang_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvhang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHinh)).EndInit();
             this.ResumeLayout(false);
 
         }

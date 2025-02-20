@@ -89,7 +89,7 @@ namespace GUI_QLBH
                
                 //Xóa sản phẩm trong database
                 //MessageBox.Show(imagePath);
-                if (busHang.DeleteHang(maHang))
+                if (busHang.DeleteHang(maHang, stremail))
                 {
                     // Kiểm tra và xóa hình trong thư mục nếu tồn tại
                     if (File.Exists(imagePath))
@@ -305,7 +305,7 @@ namespace GUI_QLBH
             {
                 DTO_Hang h = new DTO_Hang(int.Parse(txtMahang.Text), txtTenhang.Text, int.Parse(txtSoluong.Text),
                     float.Parse(txtDongianhap.Text),
-                    float.Parse(txtDongiaban.Text), txtHinh.Text, txtGhichu.Text);
+                    float.Parse(txtDongiaban.Text), txtHinh.Text, txtGhichu.Text,stremail);
                 if (MessageBox.Show("Bạn có chắc muốn chỉnh sửa", "Confirm", MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question) == DialogResult.Yes)
                 {

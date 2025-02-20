@@ -388,5 +388,30 @@ namespace GUI_QLBH
             txttimKiem.Text = null;
             txttimKiem.BackColor = Color.White;
         }
+
+        private void dgvNhanvien_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Định dạng cột Vai Trò (cột thứ 3, index = 3)
+            if (e.ColumnIndex == 4 && e.Value != null)
+            {
+                string valueStr = e.Value.ToString().Trim(); // Xóa khoảng trắng đầu/cuối nếu có
+                if (int.TryParse(valueStr, out int vaiTro))
+                {
+                    e.Value = (vaiTro == 1) ? "Quản trị" : "Nhân viên";
+                    e.FormattingApplied = true;
+                }
+            }
+
+            // Định dạng cột Tình Trạng (cột thứ 4, index = 4)
+            if (e.ColumnIndex == 5 && e.Value != null)
+            {
+                string valueStr = e.Value.ToString().Trim(); // Xóa khoảng trắng đầu/cuối nếu có
+                if (int.TryParse(valueStr, out int tinhTrang))
+                {
+                    e.Value = (tinhTrang == 1) ? "Hoạt Động" : "Ngừng";
+                    e.FormattingApplied = true;
+                }
+            }
+        }
     }
 }

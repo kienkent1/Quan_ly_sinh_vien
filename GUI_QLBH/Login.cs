@@ -18,6 +18,8 @@ namespace GUI_QLBH
     public partial class Login : Form
     {
         BUS_NhanVien busNhanVien = new BUS_QLBH.BUS_NhanVien();
+       
+       
 
         //Các giá trị pass cho FrmMain phân quyền
         public string email { set; get; }
@@ -60,8 +62,11 @@ namespace GUI_QLBH
                         FrmMain.mail = nv.EmailNV;
                         DataTable dt = busNhanVien.VaiTroNhanVien(nv.EmailNV);
                         vaitro = dt.Rows[0][0].ToString();
+                        FrmMain.role = vaitro;
+                       
                         MessageBox.Show("Đăng nhập thành công");
                         FrmMain.session = 1;
+                        //MessageBox.Show(vaitro);
                         if (isFirstLogin)
                         {
                             MessageBox.Show("Bạn phải đổi mật khẩu lần đầu đăng nhập");

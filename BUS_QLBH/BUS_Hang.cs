@@ -24,9 +24,9 @@ namespace BUS_QLBH
         {
             return dalHang.UpdateHang(hang);
         }
-        public bool DeleteHang(int maHang)
+        public bool DeleteHang(int maHang, string email)
         {
-            return dalHang.DeleteHang(maHang);
+            return dalHang.DeleteHang(maHang, email);
         }
         public DataTable SearchHang(string tenHang)
         {

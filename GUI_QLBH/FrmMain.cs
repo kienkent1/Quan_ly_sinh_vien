@@ -19,6 +19,8 @@ namespace GUI_QLBH
         public static string mail;// truyên email từ frmMain cho các form khác thong qua bien static
         Thread th;//using System.Threading;
         Login dn;
+        public static string role ;
+
         public FrmMain()
         {
             InitializeComponent();
@@ -77,6 +79,7 @@ namespace GUI_QLBH
             {
                 thongtinnvToolStripMenuItem.Text = null;
                 profile = 0; //ẩn mục 'thong tin nhan vien'
+                
             }
         }
         private void ResetValue()

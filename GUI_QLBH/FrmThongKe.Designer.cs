@@ -34,17 +34,23 @@ namespace GUI_QLBH
             this.dgvsp = new System.Windows.Forms.DataGridView();
             this.tptonkho = new System.Windows.Forms.TabPage();
             this.dgvtonkho = new System.Windows.Forms.DataGridView();
+            this.lichsu = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgvlichsu = new System.Windows.Forms.DataGridView();
             this.tcThongKe.SuspendLayout();
             this.tpsanpham.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvsp)).BeginInit();
             this.tptonkho.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvtonkho)).BeginInit();
+            this.lichsu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvlichsu)).BeginInit();
             this.SuspendLayout();
             // 
             // tcThongKe
             // 
             this.tcThongKe.Controls.Add(this.tpsanpham);
             this.tcThongKe.Controls.Add(this.tptonkho);
+            this.tcThongKe.Controls.Add(this.lichsu);
             this.tcThongKe.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcThongKe.Location = new System.Drawing.Point(0, 0);
             this.tcThongKe.Margin = new System.Windows.Forms.Padding(4);
@@ -93,12 +99,51 @@ namespace GUI_QLBH
             // dgvtonkho
             // 
             this.dgvtonkho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvtonkho.Location = new System.Drawing.Point(3, 0);
+            this.dgvtonkho.Location = new System.Drawing.Point(-4, 0);
             this.dgvtonkho.Margin = new System.Windows.Forms.Padding(4);
             this.dgvtonkho.Name = "dgvtonkho";
             this.dgvtonkho.RowHeadersWidth = 51;
-            this.dgvtonkho.Size = new System.Drawing.Size(734, 364);
+            this.dgvtonkho.Size = new System.Drawing.Size(737, 364);
             this.dgvtonkho.TabIndex = 0;
+            // 
+            // lichsu
+            // 
+            this.lichsu.Controls.Add(this.button1);
+            this.lichsu.Controls.Add(this.dgvlichsu);
+            this.lichsu.Location = new System.Drawing.Point(4, 25);
+            this.lichsu.Name = "lichsu";
+            this.lichsu.Size = new System.Drawing.Size(733, 364);
+            this.lichsu.TabIndex = 2;
+            this.lichsu.Text = "Lịch sử";
+            this.lichsu.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::GUI_QLBH.Properties.Resources.contract__2_;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(603, 315);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(122, 41);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "&Hiển thị";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgvlichsu
+            // 
+            this.dgvlichsu.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvlichsu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvlichsu.Location = new System.Drawing.Point(-4, 0);
+            this.dgvlichsu.Name = "dgvlichsu";
+            this.dgvlichsu.RowHeadersWidth = 51;
+            this.dgvlichsu.RowTemplate.Height = 24;
+            this.dgvlichsu.Size = new System.Drawing.Size(737, 309);
+            this.dgvlichsu.TabIndex = 0;
+            this.dgvlichsu.Click += new System.EventHandler(this.dgvlichsu_Click);
             // 
             // FrmThongKe
             // 
@@ -114,6 +159,8 @@ namespace GUI_QLBH
             ((System.ComponentModel.ISupportInitialize)(this.dgvsp)).EndInit();
             this.tptonkho.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvtonkho)).EndInit();
+            this.lichsu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvlichsu)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,5 +172,8 @@ namespace GUI_QLBH
         private System.Windows.Forms.DataGridView dgvsp;
         private System.Windows.Forms.TabPage tptonkho;
         private System.Windows.Forms.DataGridView dgvtonkho;
+        private System.Windows.Forms.TabPage lichsu;
+        private System.Windows.Forms.DataGridView dgvlichsu;
+        private System.Windows.Forms.Button button1;
     }
 }

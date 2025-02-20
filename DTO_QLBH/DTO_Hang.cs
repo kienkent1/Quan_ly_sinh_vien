@@ -120,7 +120,7 @@ namespace DTO_QLBH
            
 
             public DTO_Hang(int maHang, string tenHang, int soLuong, float donGiaNhap, float donGiaBan,
-                            string hinhAnh, string ghiChu)
+                            string hinhAnh, string ghiChu, string emailnv)
             {
                 this.maHang = maHang;
                 this.tenHang = tenHang;
@@ -129,6 +129,7 @@ namespace DTO_QLBH
                 this.donGiaBan = donGiaBan;
                 this.hinhAnh = hinhAnh;
                 this.ghiChu = ghiChu;
+            this.EmailNV = emailnv;
             }
             public DTO_Hang(string tenHang, int soLuong, float donGiaNhap, float donGiaBan,
                             string hinhAnh, string ghiChu, string emailnv)
