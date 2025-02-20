@@ -102,18 +102,21 @@ namespace GUI_QLBH
         {
             try
             {
-                if (string.IsNullOrEmpty(selectedMaKhach) ||
-                    string.IsNullOrEmpty(txtDienthoai.Text) ||
+                if (string.IsNullOrEmpty(txtDienthoai.Text) ||
                     string.IsNullOrEmpty(txtDiachi.Text) ||
                     string.IsNullOrEmpty(txtTenkhach.Text))
                 {
                     MessageBox.Show("Vui lòng kiểm tra thông tin để thêm", "Thông báo");
                     return;
                 }
+               
+
+
+
 
                 string soDienThoai = txtDienthoai.Text.Trim();
                 string tenKhach = txtTenkhach.Text.Trim();
-                string maKhach = selectedMaKhach.Trim();
+                //string maKhach = selectedMaKhach.Trim();
 
                 // Kiểm tra số điện thoại: từ 10 đến 13 chữ số và là số nguyên
                 if (!Regex.IsMatch(soDienThoai, @"^\d{10,13}$"))
@@ -134,7 +137,7 @@ namespace GUI_QLBH
                 }
 
                 // Kiểm tra số điện thoại có trong database chưa
-                if (busKhach.KiemTraSoDienThoaiTonTai(maKhach,soDienThoai))
+                if (busKhach.KiemTraSoDienThoaiTonTai("",soDienThoai))
                 {
                     MessageBox.Show("Số điện thoại này đã tồn tại. Vui lòng nhập số khác!",
                                     "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
